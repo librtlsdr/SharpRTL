@@ -46,7 +46,7 @@ namespace SharpRTL {
     /// </summary>
     /// <param name="index">index of the device</param>
     /// <returns></returns>
-    public static string rtlsdr_get_device_name(uint index) => Marshal.PtrToStringAnsi(_rtlsdr_get_device_name(index));
+    public static string rtlsdr_get_device_name(uint index) {return Marshal.PtrToStringAnsi(_rtlsdr_get_device_name(index));}
 
     [DllImport(LibRtlSdr, EntryPoint = "rtlsdr_get_device_name", CallingConvention = CallingConvention.Cdecl)]
     private static extern IntPtr _rtlsdr_get_device_name(uint index);
