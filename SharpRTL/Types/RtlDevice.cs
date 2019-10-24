@@ -19,7 +19,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using static SharpRTL.Native;
+using SharpRTL;
 
 namespace SharpRTL.Types {
   public class RtlDevice {
@@ -31,7 +31,7 @@ namespace SharpRTL.Types {
     public delegate void SamplesAvailableEvent(ref byte[] data, int length);
     #endregion
     #region Static Fields
-    private static readonly RtlSdrReadAsyncCallback _rtlCallback = new RtlSdrReadAsyncCallback(rtlsdrSamplesAvailableCallback);
+    private static readonly SharpRTL.Native.RtlSdrReadAsyncCallback _rtlCallback = new SharpRTL.Native.RtlSdrReadAsyncCallback(rtlsdrSamplesAvailableCallback);
     private static readonly uint _readLength = 16384;
     #endregion
     #region Fields
@@ -230,15 +230,15 @@ namespace SharpRTL.Types {
     /// <summary>
     /// Device Index
     /// </summary>
-    public uint Index => _index;
+    public uint Index { get {return _index;} }
     /// <summary>
     /// Running State
     /// </summary>
-    public bool IsRunning => _worker != null;
+    public bool IsRunning { get {return _worker != null;}}
     /// <summary>
     /// Device Name
     /// </summary>
-    public string Name => _name;
+    public string Name { get { return _name;} }
     /// <summary>
     /// Device Sample Rate
     /// </summary>
@@ -266,7 +266,7 @@ namespace SharpRTL.Types {
     /// <summary>
     /// Device supports offset tunning
     /// </summary>
-    public bool SupportsOffsetTuning => _supportsOffsetTuning;
+    public bool SupportsOffsetTuning { get { return  _supportsOffsetTuning; } }
 
     /// <summary>
     /// Device Tuner Type
